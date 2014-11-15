@@ -10,11 +10,12 @@
 
   <link href="//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
   <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
 
   <link rel="stylesheet" href="landingpage.css">
 </head>
-<body fullbleed>
-  <div class="main-nav getting-started">
+<body>
+  <div class="main-nav elements">
     <div class="header">
       Title Here
     </div>
@@ -25,8 +26,11 @@
         </div>
         <div class="scrim">
           <div class="scrim-text">
-            <span class="scrim-title">Get the code</span>
-            <p>Download the starter project.</p>
+            <span class="scrim-title">Element Guides</span>
+            <p>Learn how to work with the core and paper element sets.</p>
+          </div>
+          <div class="scrim-buttons">
+              <paper-button>Guides</paper-button>
           </div>
         </div>
       </div>
@@ -37,8 +41,12 @@
         </div>
         <div class="scrim">
           <div class="scrim-text">
-            <span class="scrim-title">Polymer in 10 minutes</span>
-            <p>Create web components, declaratively.</p>
+            <span class="scrim-title">Core Elements</span>
+            <p>A set of visual and non-visual utility elements for working with layout, user input, selection, and scaffolding apps.</p>
+          </div>
+          <div class="scrim-buttons">
+              <paper-button>Docs</paper-button>
+              <paper-button>Demos</paper-button>
           </div>
         </div>
       </div>
@@ -49,35 +57,16 @@
         </div>
         <div class="scrim">
           <div class="scrim-text">
-            <span class="scrim-title">Tutorial</span>
-            <p>Build a small Polymer application.</p>
+            <span class="scrim-title">Paper Elements</span>
+            <p>A set of highly visual and interactive Material Design elements including controls, layouts, transition, and scrolling effects.</p>
+          </div>
+          <div class="scrim-buttons">
+              <paper-button>Docs</paper-button>
+              <paper-button>Demos</paper-button>
           </div>
         </div>
       </div>
 
-      <div class="landing-tile" horizontal layout center center-justified>
-        <div class="tile-image-wrapper">
-          <img src="images/concepts.svg">
-        </div>
-        <div class="scrim">
-          <div class="scrim-text">
-            <span class="scrim-title">Understanding Polymer</span>
-            <p>The main concepts of the library.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="landing-tile" horizontal layout center center-justified>
-        <div class="tile-image-wrapper">
-          <img src="images/platform.svg">
-        </div>
-        <div class="scrim">
-          <div class="scrim-text">
-            <span class="scrim-title">Web Components basics</span>
-            <p>The foundations of Polymer.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <script src="column-layout.js"></script>

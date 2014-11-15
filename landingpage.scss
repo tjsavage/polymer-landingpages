@@ -1,25 +1,12 @@
-/* Cutoff points for devices */
+/* Cutoff points */
 $min_two_column_width: 512px;
 $min_three_column_width: 1024px;
 
-/* Web (desktop) layout. Columns are fixed width, and there's a maximum number
-   of 3 columns, after which we just add padding to either side. */
-$web_columns: 3;
-$web_column_size: 360px;
-$web_gutter: 40px;
-
-/* Tablet layout. There's a fixed number of columns, which grow to fill the
-   entire container. */
-$tablet_columns: 2;
-$tablet_gutter: 24px;
-
-/* Phone layout. There's a fixed number of columns, which grow to fill the
-   entire container. */
-$phone_columns: 1;
-$phone_gutter: 16px;
-
 $tile_min_height: 320px;
 $scrim_height: 80px;
+$elements_scrim_height: 160px;
+$elements_tile_gutter: 20px;
+$elements_tile_max_width: 280px;
 $tile_image_size: 180px;
 
 $scroll_threshold: 832px;
@@ -62,9 +49,11 @@ $tile_image_wrapper_height: $tile_min_height - $scrim_height;
     right: 0px;
     color: white;
     background-color: rgba(0,0,0,.3);
+    font-family: RobotoDraft, arial, sans-serif;
+    font-weight: 100;
 
     .scrim-text {
-      padding: 15px 15px;
+      padding: 12px 12px;
 
       .scrim-title {
         font-size: 20px;
@@ -76,6 +65,103 @@ $tile_image_wrapper_height: $tile_min_height - $scrim_height;
     }
   }
 }
+
+/* Elements page-specific styles */
+$elements_tile_image_wrapper_height: $tile_min_height - $elements_scrim_height;
+$elements_layout_padding: $elements_tile_gutter / 2;
+.elements {
+  .column-layout {
+    padding: 0px $elements_layout_padding;
+  }
+
+  .landing-tile {
+    .tile-image-wrapper {
+      height: $elements_tile_image_wrapper_height;
+    }
+
+    .scrim {
+      height: $elements_scrim_height;
+      background-color: white;
+      color: #5a5a5a;
+
+      .scrim-text {
+        padding: 20px 20px;
+      }
+
+      .scrim-buttons {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        color: rgb(45, 69, 163);
+      }
+    }
+  }
+}
+
+$elements_tile_margin: $elements_tile_gutter / 2;
+.elements .column-layout > * {
+  margin: $elements_tile_margin;
+  max_width: $elements_tile_max_width;
+}
+
+/* Web layout */
+.column-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin: 0;
+  box-sizing: border-box;
+}
+
+$three_column_percent: 100% / 3;
+.column-layout > * {
+  width: $three_column_percent;
+  min-height: $tile_min_height;
+  box-sizing: border-box;
+}
+
+/* Alright, this is not pretty, but we need to add a number of invisible
+   elements to make sure that the flexbox elements align properly, even when
+   wrapping to less than 3 columns. It's the only way I've found to get the
+   last line to align correctly, while keeping the flexbox centered on its
+   container.
+ */
+.column-layout > .wrap-hack {
+  height: 0;
+  min-height: 0;
+  max-height: 0;
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* Two-column layout */
+$two_column_percent: 100% / 2;
+@media screen
+  and (min-width: $min_two_column_width)
+  and (max-width: $min_three_column_width - 1px) {
+  .column-layout > * {
+    min-width: #{$two_column_percent};
+    width: #{$two_column_percent};
+  }
+
+  .elements .column-layout > * {
+    width: calc(#{$two_column_percent} - #{$elements_tile_gutter});
+  }
+}
+
+/* One-column layout */
+@media screen and (max-width: $min_two_column_width - 1px) {
+  .column-layout > * {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+/* Colors */
 
 .getting-started {
   background-color: rgb(60, 99, 249);
@@ -133,56 +219,18 @@ $tile_image_wrapper_height: $tile_min_height - $scrim_height;
   }
 }
 
-/* Web layout */
-.column-layout {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+.elements {
+  background-color: rgb(101, 118, 189);
 
-  margin: 0;
-  box-sizing: border-box;
-}
-
-$three_column_percent: 100% / 3;
-.column-layout > * {
-  width: $three_column_percent;
-  min-height: $tile_min_height;
-  box-sizing: border-box;
-}
-
-/* Alright, this is not pretty, but we need to add a number of invisible
-   elements to make sure that the flexbox elements align properly, even when
-   wrapping to less than 3 columns. It's the only way I've found to get the
-   last line to align correctly, while keeping the flexbox centered on its
-   container.
- */
-.column-layout > .wrap-hack {
-  height: 0;
-  min-height: 0;
-  max-height: 0;
-  border: none;
-  padding: 0;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-/* Two-column layout */
-$two_column_percent: 100% / 2;
-@media screen
-  and (min-width: $min_two_column_width)
-  and (max-width: $min_three_column_width - 1px) {
-  .column-layout > * {
-    //margin: $tablet_gutter / 2;
-    min-width: #{$two_column_percent};
-    width: #{$two_column_percent};
+  .landing-tile:nth-child(1) {
+    background-color: rgb(46, 53, 81);
   }
-}
 
-/* One-column layout */
-@media screen and (max-width: $min_two_column_width - 1px) {
-  .column-layout > * {
-    width: 100%;
-    min-width: 100%;
+  .landing-tile:nth-child(2) {
+    background-color: rgb(61, 70, 109);
+  }
+
+  .landing-tile:nth-child(3) {
+    background-color: rgb(113, 147, 203);
   }
 }
