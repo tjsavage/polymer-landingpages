@@ -1,0 +1,188 @@
+/* Cutoff points for devices */
+$min_two_column_width: 512px;
+$min_three_column_width: 1024px;
+
+/* Web (desktop) layout. Columns are fixed width, and there's a maximum number
+   of 3 columns, after which we just add padding to either side. */
+$web_columns: 3;
+$web_column_size: 360px;
+$web_gutter: 40px;
+
+/* Tablet layout. There's a fixed number of columns, which grow to fill the
+   entire container. */
+$tablet_columns: 2;
+$tablet_gutter: 24px;
+
+/* Phone layout. There's a fixed number of columns, which grow to fill the
+   entire container. */
+$phone_columns: 1;
+$phone_gutter: 16px;
+
+$tile_min_height: 320px;
+$scrim_height: 80px;
+$tile_image_size: 180px;
+
+$scroll_threshold: 832px;
+$left_nav_min_width: 1480px;
+
+$header_height: 56px;
+
+body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+}
+
+.header {
+  height: #{$header_height};
+  width: 100%;
+}
+
+.main-nav {
+  height: 100%;
+}
+
+$tile_image_wrapper_height: $tile_min_height - $scrim_height;
+.landing-tile {
+  position: relative;
+
+  .tile-image-wrapper {
+    height: $tile_image_wrapper_height;
+    
+    img {
+      width: $tile_image_size;
+    }
+  }
+
+  .scrim {
+    height: $scrim_height;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    color: white;
+    background-color: rgba(0,0,0,.3);
+
+    .scrim-text {
+      padding: 15px 15px;
+
+      .scrim-title {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.getting-started {
+  background-color: rgb(60, 99, 249);
+
+  .landing-tile:nth-child(1) {
+    background-color: rgb(26, 42, 106);
+  }
+
+  .landing-tile:nth-child(2) {
+    background-color: rgb(32, 53, 139);
+  }
+  
+  .landing-tile:nth-child(3) {
+    background-color: rgb(47, 76, 188);
+  }
+
+  .landing-tile:nth-child(4) {
+    background-color: rgb(53, 87, 217);
+  }
+
+  .landing-tile:nth-child(5) {
+    background-color: rgb(60, 99, 249);
+  }
+
+  .landing-tile:nth-child(6) {
+    background-color: rgb(78, 112, 249);
+  }
+}
+
+.guides {
+  background-color: rgb(226, 67, 117);
+
+  .landing-tile:nth-child(1) {
+    background-color: rgb(120, 38, 64)
+  }
+
+  .landing-tile:nth-child(2) {
+    background-color: rgb(144, 45, 75);
+  }
+
+  .landing-tile:nth-child(3) {
+    background-color: rgb(171, 52, 89);
+  }
+  
+  .landing-tile:nth-child(4) {
+    background-color: rgb(157, 59, 98);
+  }
+
+  .landing-tile:nth-child(5) {
+    background-color: rgb(229, 100, 145);
+  }
+
+  .landing-tile:nth-child(6) {
+    background-color: rgb(230, 113, 154);
+  }
+}
+
+/* Web layout */
+.column-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin: 0;
+  box-sizing: border-box;
+}
+
+$three_column_percent: 100% / 3;
+.column-layout > * {
+  width: $three_column_percent;
+  min-height: $tile_min_height;
+  box-sizing: border-box;
+}
+
+/* Alright, this is not pretty, but we need to add a number of invisible
+   elements to make sure that the flexbox elements align properly, even when
+   wrapping to less than 3 columns. It's the only way I've found to get the
+   last line to align correctly, while keeping the flexbox centered on its
+   container.
+ */
+.column-layout > .wrap-hack {
+  height: 0;
+  min-height: 0;
+  max-height: 0;
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+/* Two-column layout */
+$two_column_percent: 100% / 2;
+@media screen
+  and (min-width: $min_two_column_width)
+  and (max-width: $min_three_column_width - 1px) {
+  .column-layout > * {
+    //margin: $tablet_gutter / 2;
+    min-width: #{$two_column_percent};
+    width: #{$two_column_percent};
+  }
+}
+
+/* One-column layout */
+@media screen and (max-width: $min_two_column_width - 1px) {
+  .column-layout > * {
+    width: 100%;
+    min-width: 100%;
+  }
+}

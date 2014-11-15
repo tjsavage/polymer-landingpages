@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 144 144" enable-background="new 0 0 144 144" xml:space="preserve">
+<symbol  id="ic_x5F_playcircleFill" viewBox="0 -24 24 24">
+	<polygon fill="none" points="24,-24 0,-24 0,0 24,0 	"/>
+	<g>
+		<path fill="#FFFFFF" d="M12-2C6.5-2,2-6.5,2-12s4.5-10,10-10s10,4.5,10,10S17.5-2,12-2z M10-16.5v9l6-4.5L10-16.5z"/>
+	</g>
+</symbol>
+<use xlink:href="#ic_x5F_playcircleFill"  width="24" height="24" id="XMLID_8_" x="0" y="-24" transform="matrix(4.296 0 0 -4.296 20.4478 20.4478)" overflow="visible" opacity="0.8"/>
+</svg>

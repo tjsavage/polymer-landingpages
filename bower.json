@@ -1,0 +1,19 @@
+{
+  "name": "landingpage",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tjsavage/polymer-landingpages",
+  "authors": [
+    "Taylor Savage <tjsavage@google.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5.1"
+  }
+}
