@@ -2,6 +2,7 @@
 $min_two_column_width: 512px;
 $min_three_column_width: 1024px;
 
+/* Constants */
 $tile_min_height: 320px;
 $scrim_height: 80px;
 $elements_scrim_height: 160px;
@@ -14,6 +15,7 @@ $left_nav_min_width: 1480px;
 
 $header_height: 56px;
 
+/* Overall layout */
 body {
   padding: 0px;
   margin: 0px;
@@ -29,6 +31,7 @@ body {
   height: 100%;
 }
 
+/* Overall tile styling */
 $tile_image_wrapper_height: $tile_min_height - $scrim_height;
 .landing-tile {
   position: relative;
@@ -122,11 +125,7 @@ $three_column_percent: 100% / 3;
   box-sizing: border-box;
 }
 
-/* Alright, this is not pretty, but we need to add a number of invisible
-   elements to make sure that the flexbox elements align properly, even when
-   wrapping to less than 3 columns. It's the only way I've found to get the
-   last line to align correctly, while keeping the flexbox centered on its
-   container.
+/* Web Fundamentals Grid Wrap Hack
  */
 .column-layout > .wrap-hack {
   height: 0;
